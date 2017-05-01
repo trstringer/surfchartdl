@@ -1,0 +1,13 @@
+#!/bin/bash
+
+SCRIPT_DIR=$(realpath $(dirname "$0"))
+BIN_NAME=surfchartdownload
+
+sed 's|TEMPDIR|'$SCRIPT_DIR'|g' $SCRIPT_DIR/$BIN_NAME > ~/.local/bin/$BIN_NAME
+chmod 755 ~/.local/bin/$BIN_NAME
+
+cd $SCRIPT_DIR
+python3 -m venv venv
+. venv/bin/activate
+pip install -r requirements.txt
+deactivate
